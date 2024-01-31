@@ -6,7 +6,6 @@ body {
   flex-direction: column;
   min-height: 95vh;
 }
-
 .main {
   flex: 1;
 }
@@ -15,11 +14,12 @@ h1 {
   font-size: 5rem;
 }
 
-.creative {
+footer {
+  text-align: right;
   color: midnightblue;
 }
 
-.title-image {
+.tile-image {
   height: 200px;
   float: left;
   margin-right: 50px;
@@ -37,8 +37,7 @@ h1 {
   float: right;
 }
 
-footer {
-  text-align: right;
+.creative {
   color: midnightblue;
 }
 
@@ -65,5 +64,4 @@ footer {
     display: inline;
     object-fit: cover;
   }
-
 }
