@@ -1,1 +1,1 @@
-document.firstElementChild.lastElementChild.lastElementChild.lastElementChild.innerHTML = "Zozika!";
+document.querySelector("li").style.color = "red";
