@@ -6,10 +6,10 @@ const port = 3000;
 const API_URL = "https://secrets-api.appbrewery.com/";
 
 //TODO 1: Fill in your values for the 3 types of auth.
-const yourUsername = "";
-const yourPassword = "";
-const yourAPIKey = "";
-const yourBearerToken = "";
+const yourUsername = "mozo";
+const yourPassword = "password1234";
+const yourAPIKey = "81349b6d-644c-4f9c-bd24-578e602a8977";
+const yourBearerToken = "410497ce-e829-4296-856f-1cbeece5ebe3";
 
 app.get("/", (req, res) => {
   res.render("index.ejs", { content: "API Response." });
@@ -42,12 +42,12 @@ app.get("/basicAuth", async (req, res) => {
   */
   try {
     const result = await axios.get(API_URL + "/all?page=2",
-    {
-      auth: {
-        username: yourUsername,
-        password: yourPassword,
-      }
-    });
+      {
+        auth: {
+          username: yourUsername,
+          password: yourPassword,
+        }
+      });
     res.render("index.ejs", { content: JSON.stringify(result.data) });
   } catch (error) {
     res.status(404).send(error.message);
@@ -74,7 +74,7 @@ app.get("/apiKey", async (req, res) => {
 
 const config = {
   headers: { Authorization: `Bearer ${yourBearerToken}` },
-}; 
+};
 
 app.get("/bearerToken", async (req, res) => {
   //TODO 5: Write your code here to hit up the /secrets/{id} endpoint
@@ -88,12 +88,12 @@ app.get("/bearerToken", async (req, res) => {
     },
   });
   */
-try {
-  const result = await axios.get(API_URL + "/secrets/42", config);
-  res.render("index.ejs", { content: JSON.stringify(result.data)});
-} catch (error) {
-  res.status(404).send(error.message);
-}
+  try {
+    const result = await axios.get(API_URL + "/secrets/42", config);
+    res.render("index.ejs", { content: JSON.stringify(result.data) });
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
 });
 
 app.listen(port, () => {
