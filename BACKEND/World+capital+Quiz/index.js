@@ -1,14 +1,35 @@
 import express from "express";
 import bodyParser from "body-parser";
+import pg from "pg";
+
+// Set up the connection to the database
+const db = new pg.Client({
+  user: "postgres", // default username
+  host: "localhost",  // default hostname
+  database: "world", // database name
+  password: "admin1234", // password
+  post: 3000, // default port
+});
 
 const app = express();
-const port = 3000;
+const port = 3030;
+
+db.connect();
 
 let quiz = [
   { country: "France", capital: "Paris" },
   { country: "United Kingdom", capital: "London" },
   { country: "United States of America", capital: "New York" },
 ];
+
+db.query("SELECT * FROM capitals", (err, res) => {
+  if (err) {
+    console.error("Error executing query", err.stack);
+  } else {
+    quiz = res.rows;
+  }
+  db.end();
+});
 
 let totalCorrect = 0;
 
