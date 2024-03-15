@@ -48,7 +48,7 @@ app.post("/add", async (req, res) => {
     try {
       await db.query(
         "INSERT INTO visited_countries (country_code) VALUES ($1)",
-        [countryCode]
+        [countryCode,]
       );
       res.redirect("/");
     } catch (err) {
