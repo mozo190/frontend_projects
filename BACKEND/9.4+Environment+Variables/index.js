@@ -8,13 +8,13 @@ import session from "express-session";
 import env from "dotenv";
 
 const app = express();
-const port = 3000;
+const port = 3030;
 const saltRounds = 10;
 env.config();
 
 app.use(
   session({
-    secret: "TOPSECRETWORD",
+    secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
   })
@@ -29,8 +29,8 @@ const db = new pg.Client({
   user: "postgres",
   host: "localhost",
   database: "secrets",
-  password: "123456",
-  port: 5432,
+  password: "admin1234",
+  port: 3000,
 });
 db.connect();
 
