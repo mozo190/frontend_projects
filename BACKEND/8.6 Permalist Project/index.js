@@ -13,6 +13,8 @@ const db = new pg.Client({
     port: 3000,
 });
 
+db.connect();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -43,31 +45,32 @@ app.post("/add", async(req, res) => {
     await db.query("INSERT INTO items (title) VALUES ($1)",
     [item]);
     res.redirect("/");
-  } catch (err){
+  } catch (err) {
     console.log(err);
   }
 });
 
-app.post("/edit", async(req, res) => {
+app.post("/edit", async (req, res) => {
   const item = req.body.updatedItemTitle;
-  const id = req.body.updatedItemTitle;
+  const id = req.body.updatedItemId;
 
   try {
     await db.query("UPDATE items SET title = ($1) WHERE id = $2",
     [item, id]);
-  } catch (err){
+    res.redirect("/");
+  } catch (err) {
     console.log(err);
   }
 });
 
-app.post("/delete", async(req, res) => {
-  const id = req.body.checkbox;
+app.post("/delete", async (req, res) => {
+  const id = req.body.deleteItemId;
 
   try {
     await db.query("DELETE FROM items WHERE id = $1", 
-    [id])
+    [id]);
     res.redirect("/");
-  } catch (err){
+  } catch (err) {
     console.log(err);
   }
 });
