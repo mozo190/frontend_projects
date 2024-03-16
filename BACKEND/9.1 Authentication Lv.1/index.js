@@ -41,7 +41,7 @@ app.post("/register", async (req, res) => {
         res.send("Email already exists. Try logging in.");
       } else {
         const result = await db.query(
-          "INSERT INTO users (email, passwors) VALUES ($1, $2)",
+          "INSERT INTO users (email, password) VALUES ($1, $2)",
           [email, password]);
           console.log(result);
           res.render("secrets.ejs");
