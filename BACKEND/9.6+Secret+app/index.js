@@ -82,7 +82,7 @@ app.get("/secrets", async (req, res) => {
 
 //TODO: Add a get route for the submit button
 //Think about how the logic should work with authentication.
-app.get("/submit", function(req, res){
+app.get("/submit", function (req, res) {
   if (req.isAuthenticated()) {
     res.render("submit.ejs");
   } else {
@@ -148,12 +148,12 @@ app.post("/register", async (req, res) => {
 
 //TODO: Create the post route for submit.
 //Handle the submitted data and add it to the database
-app.post("/submit", async(req, res) => {
+app.post("/submit", async (req, res) => {
   const submittedSecret = req.body.secret;
   console.log(req.user);
   try {
-    const result = await db.query("UPDATE users SET secret = $1 WHERE email = $2", 
-    [submittedSecret, req.user.email]);
+    const result = await db.query("UPDATE users SET secret = $1 WHERE email = $2",
+      [submittedSecret, req.user.email]);
     res.redirect("/secrets");
   } catch (err) {
     console.log(err);
@@ -197,7 +197,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/google/secrets",
+      callbackURL: "http://localhost:3030/auth/google/secrets",
       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
     async (accessToken, refreshToken, profile, cb) => {
