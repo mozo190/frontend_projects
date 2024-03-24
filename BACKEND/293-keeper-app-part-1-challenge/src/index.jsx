@@ -16,3 +16,16 @@
 // to install the node modules and
 // npm run dev
 // to launch your react project in your browser
+
+import React from "react";
+import ReartDOM from "react-dom";
+import App from "./app";
+// import "./styles.css";
+
+ReartDOM.render(
+  <App />,
+//   <Footer />,
+//   <Note />,
+//   <Header />,
+// {/* <App />,  */}
+document.getElementById("root"));
