@@ -2,6 +2,8 @@ import React, { useState} from "react";
 
 function App() {
 
+  setInterval(getTime, 1000);
+
   const [time, setTime] = React.useState(new Date().toLocaleTimeString());
 
 
