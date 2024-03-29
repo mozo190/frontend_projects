@@ -1,26 +1,18 @@
-import React from "react";
+import React, { useState} from "react";
 
 function App() {
 
-  //1. Given that you can get the current time using:
-let time = new Date().toLocaleTimeString();
-console.log(time);
+  const [time, setTime] = React.useState(new Date().toLocaleTimeString());
 
-const getTime = () => {
-  time = new Date().toLocaleTimeString();
-  console.log(time);
-}
 
-setInterval(getTime, 1000);
-
-//Show the latest time in the <h1> when the Get Time button
-//is pressed.
-
+  function getTime() {
+    setTime(new Date().toLocaleTimeString());
+  }
 
   return (
     <div className="container">
-      <h1>{getTime}</h1>
-      <button onClick={}>Get Time</button>
+      <h1>{time}</h1>
+      <button onClick={ getTime }>Get Time</button>
     </div>
   );
 }
