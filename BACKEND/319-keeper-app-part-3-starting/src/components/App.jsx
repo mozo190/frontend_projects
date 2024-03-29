@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
@@ -26,7 +26,7 @@ function App() {
     <div>
       <Header />
       <CreateArea
-      onAdd={addNote}
+        onAdd={addNote}
       />
       {notes.map((noteItem, index) => {
         return <Note
@@ -36,7 +36,7 @@ function App() {
           content={noteItem.content}
         />
       })}
-      <Note key={1} title="Note title" content="Note content" onDelete= {deleteNote} />
+      <Note key={1} title="Note title" content="Note content" onDelete={deleteNote} />
       <Footer />
     </div>
   );
