@@ -1,15 +1,17 @@
 // CHALLENGE: uncomment the code below and see the car stats rendered
 import React from "react";
 import ReactDOM from "react-dom";
-import animals from "./data";
-import cars from "./data";
+// import animals from "./data";
+import cars from "./practice";
 
 // const tesla = animals[0];
 // const [cat, dog] = animals;
 
 const [honda, tesla] = cars;
-const { teslaTopSpeed, teslaTopColour} = tesla.teslaTopSpeed;
-const { hondaTopSpeed, hondaTopColour} = honda.hondaTopSpeed;
+const { speedStats: {topSpeed: teslaTopSpeed}} = tesla;
+const { speedStats: {topSpeed: hondaTopSpeed}} = honda;
+const { colourByPopularity: [hondaTopColour]} = honda;
+const { colourByPopularity: [teslaTopColour]} = tesla;
 
 
 
